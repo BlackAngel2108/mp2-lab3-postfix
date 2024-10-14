@@ -8,7 +8,7 @@ bool TPostfix::isLetter(char c) {
     return 'a' <= c && c <= 'z' || 'A' <= c && c <= 'Z' || c == '_';
 }
 bool TPostfix::isOperation(char c) {
-    return c == '+' || c == '-' || c == '*' || c == '/';
+    return c == '+' || c == '-' || c == '*' || c == '/' || c=='%';
 }
 bool TPostfix::isMinus(char c) {
     return c == '-';
@@ -243,6 +243,13 @@ double TPostfix::Calculate(istream& input, ostream& output) { // Ввод пер
             leftoperand = st.top();
             st.pop();
             st.push(leftoperand / rightoperand);
+            break;
+        case '%':
+            rightoperand = st.top();
+            st.pop();
+            leftoperand = st.top();
+            st.pop();
+            st.push(fmod(leftoperand, rightoperand));
             break;
         default:
             if (lexem.first == variable)

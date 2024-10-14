@@ -14,7 +14,7 @@ class TPostfix
         nothing,//начало выражения
         number, // 4; -4; .4; 
         variable, //переменная____ a;my_argument - right_____-a;a1 - wrong!
-        operation, //+, -, *, /
+        operation, //+, -, *, /, %
         operator_open, // (
         operator_close // )
     };
@@ -29,6 +29,7 @@ class TPostfix
     bool isOperation(char c);   // +, -, *, /
     bool isMinus(char c);       // -
     bool isPoint(char c);       // .
+    
     bool isOperator_open(char c);       // (
     bool isOperator_close(char c);         // )
 
